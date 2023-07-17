@@ -1,0 +1,12 @@
+curl -o /dev/null -s -w "%{http_code}" -H "Authorization: Bearer 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" "https://api.openai.com/v1/chat/completions"
+ 
+echo ''
+curl -o /dev/null -s -w "%{http_code}" -H "Authorization: Bearer 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" "https://api.openai.com/v1/chat/completions"
+ 
+echo ''
+curl -o /dev/null -s -w "%{http_code}" -H "Authorization: Bearer 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" "https://api.openai.com/v1/chat/completions"
+ 
+echo ''
+curl -o /dev/null -s -w "%{http_code}" -H "Authorization: Bearer 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" "https://api.openai.com/v1/chat/completions"
+ 
+echo ''

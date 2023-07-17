@@ -13,7 +13,8 @@ last_modified=$(stat -c %Y $cached_file)
 time_difference=$((current_timestamp - last_modified))
 #
 ## Calculate the time difference in days
-time_difference_days=$((time_difference / 86400))
+#time_difference_days=$((time_difference / 86400))
+time_difference_days=$((time_difference / 3600))                  
 #
 ## Check if the cached file is older than 3 days
 if [ $time_difference_days -gt 3 ]; then
@@ -21,7 +22,7 @@ if [ $time_difference_days -gt 3 ]; then
     curl -vkL $(cat 1.links) > out
     cat out | grep 'Bearer sk-*' > out.keys
     cat out.keys | awk '{ print $3 }' | sed 's/.\{3\}$//' > keys
-    echo "Cached file is older than 3 days. Running some code..."
+    echo "Cached file is older than 3 hours. Running some code..."
     else
     echo "Cached file is up to date."
 fi
@@ -30,5 +31,6 @@ fi
 #curl -vkL $(cat 1.links) > out
 #cat out | grep 'Bearer sk-*' > out.keys
 #cat out.keys | awk '{ print $3 }' | sed 's/.\{3\}$//' > keys
-echo $(cat keys)
-
+#echo $(cat keys)
+python3 test_keys.py > curls
+bash curls
