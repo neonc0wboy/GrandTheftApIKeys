@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Ai - Chat sbaliyun</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <style>
+    #chatgpt-response {
+      font-family: "等线";
+      font-size: 20px;
+      color: #0000FF;
+      font-weight: bold;
+    }
+
+    .bg-images {
+      background-image: url("./img/bg.avif") !important;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="../../style/addtohomescreen.css">
+  <script src="src/addtohomescreen.js"></script>
+  <!-- favicon icon -->
+  <link rel="icon" href="img/favicon.png">
+  <!-- All CSS Files Here -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/et-line-fonts.css">
+  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/meanmenu.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <script>
+    addToHomescreen();
+    async function callCHATGPT() {
+      var responseText1 = document.getElementById("chatgpt-response");
+      responseText1.innerHTML = ""
+      function printMessage(message) {
+        var responseText = document.getElementById("chatgpt-response");
+        var index = 0;
+
+        // 创建一个定时器，每隔一段时间打印一个字符
+        var interval = setInterval(function () {
+          responseText.innerHTML += message[index];
+          index++;
+
+          // 当打印完成时，清除定时器
+          if (index >= message.length) {
+            clearInterval(interval);
+          }
+        },
+          20); // 每隔20毫秒打印一个字符
+      }
+      var xhr = new XMLHttpRequest();
+      var url = "https://api.openai.com/v1/chat/completions";
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer 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");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var json = JSON.parse(xhr.responseText);
+          var response = json.choices[0].message.content;
+
+          // 将CHATGPT的返回值输出到文本框
+          var responseText = document.getElementById("chatgpt-response");
+
+          var index = 0;
+
+          // 创建一个定时器，每隔一段时间打印一个字符
+          var interval = setInterval(function () {
+            responseText.innerHTML += response[index];
+            index++;
+
+            // 当打印完成时，清除定时器
+            if (index >= response.length) {
+              clearInterval(interval);
+            }
+          },
+            20); // 每隔20毫秒打印一个字符
+        }
+      };
+      var prompt = document.getElementById("chat-gpt-input").value
+
+      var data = JSON.stringify({
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.5,
+        "top_p": 1,
+        "frequency_penalty": 0,
+        "presence_penalty": 0,
+        "model": "gpt-3.5-turbo"
+      });
+      console.log(data);
+      await printMessage('รอสักครู่ Bot กำลังประมวลผล: ');
+      await xhr.send(data);
+    }
+  </script>
+</head>
+
+<body class="bg-images">
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <div class="call-to-action-area ptb-60">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="form-group">
+              <textarea class="form-control" id="chatgpt-response" placeholder="กรุณารอสักครู่" rows="26" resize="none"
+                style="width: 100%;height: 75vh; margin: 0 auto; background-color: #f4f4f4; color: #333; border: 1px solid #ccc; border-radius: 10px; overflow: scroll;"
+                readonly="true"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:fixed; bottom:0px; width:100%; text-align:center; background:#DC143C">
+      <br />
+      <h5 style="color:white"><strong>ChatBot</strong></h5>
+      <div style="display:flex; justify-content:space-around; padding:10px;background:#DC143C">
+        <input type="text" id="chat-gpt-input" placeholder="ถามฉันสิ" style="width:70%;border:0px; border-radius:10px" name="" value="" />
+        <button onclick="callCHATGPT()" autocomplete="off" class="btn btn-large" href="#"
+          style="background-color: #333; color: #f4f4f4; border-radius: 10px">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>ถาม</button>
+      </div>
+    </div>
+    <footer>
+    </footer>
+
+    <script src="js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.meanmenu.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?05df94d9887ea8acd5a75f70e8a6bb11";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+</body>
+
+</html>
