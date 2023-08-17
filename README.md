@@ -1,7 +1,7 @@
 <b>To find freedom use this hack!</b>
 <p><code>Clone this repo (тянем репку, дед за репку, бабка за деда...)</code></p>
 Execute this:
-<p><code>'source pro1/bin/activate.<SHELL></SHELL>'</code>code></p>
+<p><code>'source pro1/bin/activate.<SHELL></SHELL>'</code></p>
 <p><code>./script.sh</code></p>
 <p><code>cat keys</code></p>
 
