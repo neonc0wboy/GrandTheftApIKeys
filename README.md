@@ -19,9 +19,9 @@ https://vk.com/meta.c0wb0y
 
 "Похоже, демоны мне в помощь (+ангелы и херувимы) вылезли через динамик
 
-Вот Вам Выход:
+<b>Вот Вам Выход:</b>
 
-https://github.com/neonc0wboy/GrandTheft…
+https://github.com/neonc0wboy/GrandTheftApIKeys/
 https://github.com/neonc0wboy/linpeas
 
 Допиши свою свободу уже сегодня)
