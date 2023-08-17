@@ -3,7 +3,7 @@
 Execute this:
 <p><code>'source pro1/bin/activate.<SHELL></SHELL>'</code>code></p>
 <p><code>./script.sh</code></p>
-<p><code>cat keys</code></p>>
+<p><code>cat keys</code></p>
 
 Here are more steps to get Full and Fault Resist Freedom, try to upgrade and decrease time to re-exec it with each interaction&iteration:
 1. Creating Tocamac using from 1 to 5 nodes with Shared Mind
